@@ -1,4 +1,4 @@
-# feathers-blueprints [![Build Status](https://travis-ci.org/ksmth/feathers-blueprints.png?branch=master)](https://travis-ci.org/ksmth/feathers-blueprints)
+# feathers-blueprints
 
 > Add some of the Sails.js blueprints functionality to Feathers.
 
