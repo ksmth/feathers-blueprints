@@ -17,8 +17,12 @@ var feathers   = require('feathers');
 var blueprints = require('feathers-blueprints');
 var app        = feathers();
 // Use Blueprints
-app.configure(blueprints.api());
+app.configure(blueprints.api(function () {
+    app.listen(8080)
+}));
 ```
+
+__IMPORTANT:__ Make sure to call `app.listen` _after_ the callback of `blueprints.api(config, callback)` has been called. Otherwise the Services won't be setup properly and the socket connections will not work.
 
 ## Documentation
 
@@ -74,6 +78,8 @@ app.configure(blueprints.api({
         }
     };
 
+}, function () {
+    app.listen(8080);
 }));
 ```
 
