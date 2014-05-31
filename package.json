@@ -1,6 +1,6 @@
 {
   "name": "feathers-blueprints",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Add some of the Sails.js blueprints functionality to Feathers.",
   "homepage": "https://github.com/ksmth/feathers-blueprints",
   "keywords": [
