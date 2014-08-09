@@ -1,6 +1,6 @@
 {
   "name": "feathers-blueprints",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Add some of the Sails.js blueprints functionality to Feathers.",
   "homepage": "https://github.com/ksmth/feathers-blueprints",
   "keywords": [
@@ -40,7 +40,7 @@
     "async": "^0.9.0",
     "lodash": "^2.4.1",
     "sails-disk": "^0.10.1",
-    "waterline": "^0.10.0-rc9"
+    "waterline": "^0.10.6"
   },
   "devDependencies": {
     "mocha": "*",
