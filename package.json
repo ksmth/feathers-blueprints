@@ -1,6 +1,6 @@
 {
   "name": "feathers-blueprints",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Add some of the Sails.js blueprints functionality to Feathers.",
   "homepage": "https://github.com/ksmth/feathers-blueprints",
   "keywords": [
@@ -53,5 +53,11 @@
   },
   "peerDependencies": {
     "feathers": ">=1.0.0"
-  }
+  },
+  "readme": "# feathers-blueprints\n\n> Add some of the Sails.js blueprints functionality to Feathers.\n\n## Getting Started\n\nTo install feathers-blueprints from [npm](https://www.npmjs.org/), run:\n\n```bash\n$ npm install feathers-blueprints --save\n```\n\nFinally, to use the plugin in your Feathers app:\n\n```javascript\nvar feathers   = require('feathers');\nvar blueprints = require('feathers-blueprints');\nvar app        = feathers();\n// Use Blueprints\napp.configure(blueprints.api(function () {\n    app.listen(8080)\n}));\n```\n\n__IMPORTANT:__ Make sure to call `app.listen` _after_ the callback of `blueprints.api(config, callback)` has been called. Otherwise the Services won't be setup properly and the socket connections will not work.\n\n## Documentation\n\nBy default, the blueprints assume a folder structure like this:\n\n```\n.\n├── models/\n│   ├── messages.js\n│   └── users.js\n├── node_modules/\n├── services/\n│   └── users.js\n└── app.js\n```\n\nFor each model definition inside `/models` a blueprint will be created if a corresponding service does not exist in `/services`.\n\n### Configuration\n\nYou can override the paths for the model and service lookup and also provide your own `Waterline` configuration.\n\n```JavaScript\nvar diskAdapter  = require('sails-disk');\nvar mysqlAdapter = require('sails-mysql');\n\napp.configure(blueprints.api({\n\n    modelsPath   : '/path/to/models/directory',\n    servicesPath : '/path/to/services/directory',\n    waterline    : {\n\n        adapters: {\n            'default' : diskAdapter,\n            disk      : diskAdapter,\n            mysql     : mysqlAdapter\n        },\n\n        connections: {\n            disk : {\n                adapter : 'disk'\n            },\n\n            mysql : {\n                adapter  : 'mysql',\n                host     : 'localhost',\n                database : 'foobar'\n            }\n        },\n\n        defaults : {\n            migrate : 'alter'\n        }\n    };\n\n}, function () {\n    app.listen(8080);\n}));\n```\n\n### Override blueprints\n\nTo override or modify a blueprint, create a file with the same name inside the `/services` folder. The backing `Waterline.Collection` is accessible through `this.collection` inside a service. You can use the blueprints as a starting point:\n\n```JavaScript\n// 'services/users.js'\nvar blueprints = require('feathers-blueprints');\n\nvar UsersService = blueprints.create('Users');\n\nUsersService.prototype.create = function (data, params, callback) {\n    // do custom stuff\n};\n\nmodule.exports = UsersService;\n```\n\n## Author\n\n- [Kevin Smith](https://github.com/ksmth)\n\n## License\n\nCopyright (c) 2014 Kevin Smith\n\nLicensed under the [MIT license](LICENSE).\n",
+  "readmeFilename": "README.md",
+  "gitHead": "9223ed2038dd581ef6cf49be05941ff7b5daa923",
+  "_id": "feathers-blueprints@0.0.11",
+  "_shasum": "d8c2473525b94c290bc8a424ecedf9d8c5975526",
+  "_from": "feathers-blueprints@>=0.0.11 <0.0.12"
 }
